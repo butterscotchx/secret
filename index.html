@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For You ❤️</title>
+    <title>for p ❤️</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
     <style>
-        /* --- CSS เดิม --- */
+        /* --- CSS เดิม + ปรับปรุงฟอนต์ --- */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Prompt', 'Arial', sans-serif;
+            font-family: 'Itim', cursive;
             background-color: #ffeff2;
             height: 100vh;
             display: flex;
@@ -33,17 +38,18 @@
         h1 {
             color: #ff5e78;
             margin-bottom: 20px;
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 30px;
         }
 
         input[type="text"] {
+            font-family: 'Itim', cursive;
             font-size: 2rem;
             text-align: center;
             width: 150px;
@@ -62,11 +68,12 @@
 
         /* ปุ่มหลัก */
         button.main-btn {
+            font-family: 'Itim', cursive;
             background-color: #ff5e78;
             color: white;
             border: none;
             padding: 12px 30px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(255, 94, 120, 0.3);
@@ -77,11 +84,31 @@
             transform: scale(0.95);
         }
 
+        /* ปุ่ม Home (หน้าสุดท้าย) */
+        button.home-btn {
+            font-family: 'Itim', cursive;
+            background-color: #fff;
+            color: #ff5e78;
+            border: 2px solid #ff5e78;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+
+        button.home-btn:hover {
+            background-color: #ff5e78;
+            color: white;
+        }
+
         /* --- CSS สำหรับปุ่มตัวเลือก --- */
         .choice-container { display: block; }
         .success-step { display: none; margin-top: 20px; }
 
         .choice-btn {
+            font-family: 'Itim', cursive;
             display: block;
             width: 100%;
             padding: 15px;
@@ -90,7 +117,7 @@
             border: 2px solid #ffcbd4;
             border-radius: 15px;
             color: #ff5e78;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -102,7 +129,7 @@
             color: red;
             margin-top: 10px;
             height: 20px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -121,16 +148,20 @@
         .ask-btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+            gap: 20px; /* ระยะห่างระหว่างปุ่ม */
             margin-top: 20px;
-            height: 100px; /* จองพื้นที่ให้ปุ่มวิ่ง */
+            height: 100px;
             position: relative;
         }
 
+        /* แก้ไข CSS ปุ่ม No ให้เริ่มแบบปกติก่อน */
         #no-btn {
-            position: absolute; /* เพื่อให้วิ่งไปมาได้ */
-            background-color: #999;
-            color: white;
+            position: static; /* อยู่ตำแหน่งปกติก่อน */
+            background-color: #ccc;
+            color: #555;
+            box-shadow: none;
+            transition: 0.1s ease; /* ให้ขยับสมูทนิดนึง */
         }
         
         /* ซ่อนหน้าต่างๆ ไว้ก่อน */
@@ -141,7 +172,7 @@
 <body>
 
     <div id="intro-page" class="container page">
-        <h1>สวัสดีนักสำรวจ 🕵️‍♀️</h1>
+        <h1>สวัสดีนักสำรวจพี 🕵️‍♀️</h1>
         <p>
             คุณคือนักสำรวจที่มาตามหาเหมียวลึกลับในตำนาน<br>
             แต่ว่า... เส้นทางไปตามหาอาจจะมีอุปสรรคนิดหน่อย<br>
@@ -228,13 +259,11 @@
 
     <div id="ask-girlfriend-page" class="container page">
         <h1 style="font-size: 2.5rem;">เป็นแฟนกันมั้ย? </h1>
-        <p>ตอบเป็น</p>
         
         <div class="ask-btn-container">
             <button class="main-btn" onclick="goToPage('really-final-page')" style="z-index: 10;">เป็น</button>
             
             <button id="no-btn" class="main-btn" 
-                    style="background-color: #ccc; color: #555;" 
                     onmouseover="moveButton()" 
                     ontouchstart="moveButton()">ไม่</button>
         </div>
@@ -242,14 +271,15 @@
 
     <div id="really-final-page" class="container page">
         <img src="npp.jpg" alt="Happy" style="width: 150px; border-radius: 10px; margin-bottom: 20px;">
-        <h1>ยินดีด้วย คุณได้รับเหมียวซีเครท!</h1>
-        <p>รับแล้วเลี้ยงดีดีนะ<br>เหมียวรักคุณ❤️</p>
+        <h1>ยินดีด้วย คุณได้รับ<br>เหมียวซีเครท!</h1>
+        <p>รับแล้วเลี้ยงดีดีนะ<br>เหมียวรักคุณ❤️</p>  
+        <button class="home-btn" onclick="location.reload()">🏠 Home</button>
+        <p style="font-size: 0.9rem;">Website from นพแฟนน้องพี</p>
     </div>
 
     <script>
         const CORRECT_CODE = "37"; 
 
-        // ฟังก์ชันเปลี่ยนหน้า
         function goToPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.style.display = 'none';
@@ -289,14 +319,12 @@
             document.getElementById(successId).style.display = 'block'; 
         }
 
-        // ฟังก์ชันทำให้ปุ่ม "ไม่" วิ่งหนี (รองรับทั้งเมาส์และนิ้วแตะบน iPad)
         function moveButton() {
             const btn = document.getElementById('no-btn');
-            // คำนวณพื้นที่จอเพื่อไม่ให้ปุ่มตกขอบ
             const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40); 
             const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
             
-            // เปลี่ยนตำแหน่งเป็น Fixed เพื่อให้ดิ้นไปทั่วจอได้
+            // พอเริ่มขยับปุ๊บ เปลี่ยนเป็น fixed เพื่อให้ลอยไปไหนก็ได้
             btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
