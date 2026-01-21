@@ -178,7 +178,7 @@
             แต่ว่า... เส้นทางไปตามหาอาจจะมีอุปสรรคนิดหน่อย<br>
             แล้วคุณจะพร้อมก้าวข้ามอุปสรรคไปตามหาไหม?
         </p>
-        <button class="main-btn" onclick="goToPage('login-page')">พร้อม! (บังคับตอบ)</button>
+        <button class="main-btn" onclick="startMusic(); goToPage('login-page')">พร้อม! (บังคับตอบ)</button>
     </div>
 
     <div id="login-page" class="container page">
@@ -197,7 +197,7 @@
     </div>
 
     <div id="q1-page" class="container page">
-        <h1>คำถามข้อที่ 1/3</h1>
+        <h1>คำถามข้อแรก</h1>
         <p>เดือนแรกที่เราคุยกันคือเดือนไหน?</p>
         <div id="q1-choices" class="choice-container">
             <button class="choice-btn" onclick="wrongAnswer('q1-page', 'q1-error')">1. ตุลาคม</button>
@@ -212,8 +212,8 @@
     </div>
 
     <div id="q2-page" class="container page">
-        <h1>คำถามข้อที่ 2/3</h1>
-        <p>เราเจอกันครั้งแรกที่หนายย</p>
+        <h1>คำถามข้อสอง</h1>
+        <p>แล้วเราเจอกันครั้งแรกที่หนายย</p>
         <div id="q2-choices" class="choice-container">
             <button class="choice-btn" onclick="wrongAnswer('q2-page', 'q2-error')">1. โกดังเสริมสุข</button>
             <button class="choice-btn" onclick="wrongAnswer('q2-page', 'q2-error')">2. ดาวเสาร์</button>
@@ -221,13 +221,13 @@
         </div>
         <div id="q2-success" class="success-step">
             <h2 style="color:#ff5e78;">ถูกต้อง! ใครน้อยืนรออยุ่</h2>
-            <button class="main-btn" onclick="goToPage('q3-page')">ไปข้อต่อไป ></button>
+            <button class="main-btn" onclick="goToPage('q3-page')">ข้อต่อไปสำคัญ ๆ</button>
         </div>
         <div id="q2-error" class="error-msg">จำผิดแล่ว</div>
     </div>
 
     <div id="q3-page" class="container page">
-        <h1>คำถามข้อที่ 3/3</h1>
+        <h1>คำถามข้อสาม</h1>
         <p>นพชอบอะไรที่สุด</p>
         <div id="q3-choices" class="choice-container">
             <button class="choice-btn" onclick="wrongAnswer('q3-page', 'q3-error')">1. แมว</button>
@@ -272,13 +272,26 @@
     <div id="really-final-page" class="container page">
         <img src="npp.jpg" alt="Happy" style="width: 150px; border-radius: 10px; margin-bottom: 20px;">
         <h1>ยินดีด้วย คุณได้รับ<br>เหมียวซีเครท!</h1>
-        <p>รับแล้วเลี้ยงดีดีนะ<br>เหมียวรักคุณ❤️</p>  
+        <p>รับไปแล้วเลี้ยงดีดีนะ<br>เหมียวรักน้องพีที่สุด❤️</p>   
         <button class="home-btn" onclick="location.reload()">🏠 Home</button>
         <p style="font-size: 0.9rem;">Website from นพแฟนน้องพี</p>
     </div>
 
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         const CORRECT_CODE = "37"; 
+
+        // ฟังก์ชันเล่นเพลง
+        function startMusic() {
+            var music = document.getElementById("bg-music");
+            music.volume = 0.5; // ความดัง 50%
+            music.play().catch(error => {
+                console.log("Autoplay prevented");
+            });
+        }
 
         function goToPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
